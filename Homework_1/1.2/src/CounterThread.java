@@ -11,7 +11,7 @@ class CounterThread extends Thread {
 
     @Override
     public void run() {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 1000000; i++) {
             p.lock(id);
             try {
                 counter.increaseCounter();
@@ -20,5 +20,6 @@ class CounterThread extends Thread {
                 p.unlock(id);
             }
         }
+        System.out.println("Finished - " + Thread.currentThread().getId());
     }
 }
