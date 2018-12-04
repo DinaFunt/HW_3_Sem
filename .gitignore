@@ -1,6 +1,12 @@
 # Prerequisites
 *.d
 
+#IntelliJ IDEA
+.idea/*
+*/.idea/*
+*/*.iml
+*/out/*
+
 # Object files
 *.o
 *.ko
