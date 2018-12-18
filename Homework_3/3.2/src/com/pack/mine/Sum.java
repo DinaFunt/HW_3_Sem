@@ -23,6 +23,7 @@ public class Sum {
         this.numOfThread = numOfThread;
     }
 
+//translate the numbers represented as a strings into arrays
     private void getArrays(String s1, String s2) {
         String b = new StringBuffer(s1).reverse().toString();
 
@@ -89,6 +90,7 @@ public class Sum {
         return resToString();
     }
 
+//translate the result represented as an array into String
     private String resToString() {
         String s;
         if (sum[arraySize] == 0) {

@@ -10,13 +10,13 @@ public class MyThread extends Thread {
     private static final int M = 1;
     private static final int N = 0;
 
-    private int[] a;
-    private int[] b;
-    private int[] c;
-    private int[] carries;
-    private int[] sum;
-    private int[] phases;
-    private boolean[] readiness;
+    private int[] a;                //the first number
+    private int[] b;                //the second number
+    private int[] c;                //array for work of threads in collect and distribute phases
+    private int[] carries;          //carries
+    private int[] sum;              //array for result
+    private int[] phases;           //array for array for the correct working order of threads in collect phase
+    private boolean[] readiness;    //array for telling other threads about readiness to work in distribute phase
 
     private CyclicBarrier barrier;
 
@@ -71,6 +71,8 @@ public class MyThread extends Thread {
         }
     }
 
+//calculate the values for the array of the sum
+// and summarize the section of the array for work of thread in collect and distribute phases
     private void prepare() {
         int s = M; // M - neutral element by addition
         int carr;
@@ -147,6 +149,7 @@ public class MyThread extends Thread {
         }
     }
 
+//add to the array carries[] the amounts obtained in the previous phases
     private void finalCarries() {
         int num = c[id];
 
@@ -155,6 +158,7 @@ public class MyThread extends Thread {
         }
     }
 
+//update the result according to the carries[]
     private void result() {
 
         for (int i = startX; i <= endX; i++){
@@ -164,6 +168,7 @@ public class MyThread extends Thread {
         }
     }
 
+//addition function in {M, N, C}
     private int sumCarries(int x, int y) {
         if (x + y * 3 >= 5) {
             return C;
@@ -173,6 +178,7 @@ public class MyThread extends Thread {
         return M;
     }
 
+//transfer of sum (= a[i] + b[i]) to carries
     private int intToCarry(int sum) {
         if (sum == 9) {
             return M;
