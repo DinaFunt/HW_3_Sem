@@ -1,18 +1,17 @@
-import java.util.Set;
 import java.util.concurrent.*;
 
 public class WebCrawlersManager {
 
-    private Set<String> visited;
+    private MyConcurrentSkipList<String> visited;
 
     private ExecutorService threadPool;
-    private Set<Integer> workThreads;
+    private MyConcurrentSkipList<Integer> workThreads;
     private static final int MAX_THREADS = 4;
 
      WebCrawlersManager() {
-        visited = new ConcurrentSkipListSet<>();
+        visited = new MyConcurrentSkipList<>();
         threadPool = Executors.newFixedThreadPool(MAX_THREADS);
-        workThreads = new ConcurrentSkipListSet<>();
+        workThreads = new MyConcurrentSkipList<>();
     }
 
     public void addNewThread(String link, int depth) {
