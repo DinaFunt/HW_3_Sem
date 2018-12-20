@@ -4,13 +4,13 @@ public class WebCrawlersManager {
 
     private MyConcurrentSkipList<String> visited;
 
-    private ExecutorService threadPool;
+    private MyThreadPool threadPool;
     private MyConcurrentSkipList<Integer> workThreads;
     private static final int MAX_THREADS = 4;
 
      WebCrawlersManager() {
         visited = new MyConcurrentSkipList<>();
-        threadPool = Executors.newFixedThreadPool(MAX_THREADS);
+        threadPool = new MyThreadPool(MAX_THREADS);
         workThreads = new MyConcurrentSkipList<>();
     }
 

@@ -105,6 +105,19 @@ public class MyConcurrentSkipList<T> {
         }
 
         return false;
-        }
+    }
 
+
+
+    public T first() {
+        T val = head.val;
+        synchronized (this) {
+            head = head.next;
+            if (head == null) {
+                tail = null;
+            }
+            size--;
+        }
+        return val;
+    }
 }
