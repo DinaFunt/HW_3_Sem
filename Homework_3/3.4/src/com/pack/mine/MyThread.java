@@ -69,7 +69,7 @@ public class MyThread extends Thread {
     private void collectPhase() {
         int dist = 1;
 
-        while(id - dist >= 0) {
+        while (id - dist >= 0) {
 
             if ((id + 1) % (dist * 2) != 0) {
                 return;
@@ -83,17 +83,17 @@ public class MyThread extends Thread {
                 }
             }
 
-            function(id - dist, id);
+            funcForCollectPhase(id - dist, id);
             phases[id] ++;
 
             dist *= 2;
         }
     }
 
-    private void function(int id1, int id2) {
+    private void funcForCollectPhase(int id1, int id2) {
         right = 0;
         left = 0;
-        if(extras[L][id1] >= extras[R][id2]) {
+        if (extras[L][id1] >= extras[R][id2]) {
             left = extras[L][id1] - extras[R][id2] + extras[L][id2];
             right = extras[R][id1];
         } else {
