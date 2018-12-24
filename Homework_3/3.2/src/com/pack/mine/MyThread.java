@@ -89,7 +89,7 @@ public class MyThread extends Thread {
     private void collectPhase() {
         int dist = 1;
 
-        while(id - dist >= 0) {
+        while (id - dist >= 0) {
 
             if ((id + 1) % (dist * 2) != 0) {
                 return;

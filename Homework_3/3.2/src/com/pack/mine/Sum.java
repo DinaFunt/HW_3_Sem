@@ -82,7 +82,7 @@ public class Sum {
         sum[arraySize] = 0;
 
         int carry = 0;
-        for(int i = 0; i < arraySize; i++) {
+        for (int i = 0; i < arraySize; i++) {
             sum[i] = ((xs[i] + ys[i] + carry) % 10);
             carry = ((xs[i] + ys[i] + carry) / 10);
         }
